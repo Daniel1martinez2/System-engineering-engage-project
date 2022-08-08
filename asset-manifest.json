@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/System-engineering-engage-project/static/css/main.143dc4f1.css",
-    "main.js": "/System-engineering-engage-project/static/js/main.3f9a9d9c.js",
+    "main.css": "/System-engineering-engage-project/static/css/main.64243556.css",
+    "main.js": "/System-engineering-engage-project/static/js/main.fe1fb214.js",
     "static/media/sistemas.png": "/System-engineering-engage-project/static/media/sistemas.7a9559fe9fdf41c675a3.png",
     "static/media/star.png": "/System-engineering-engage-project/static/media/star.b3dfd2d205c6d83c71b6.png",
     "static/media/fireworks.gif": "/System-engineering-engage-project/static/media/fireworks.08ad15688f73a2a1f4ba.gif",
@@ -12,18 +12,20 @@
     "static/media/warning.svg": "/System-engineering-engage-project/static/media/warning.f6c16f1e98979d907373e3727d6796fa.svg",
     "static/media/cancel.svg": "/System-engineering-engage-project/static/media/cancel.672ba290b60671ce139dace8a9f527a3.svg",
     "static/media/search.svg": "/System-engineering-engage-project/static/media/search.4cb643b8a53be94a4749154e48936411.svg",
+    "static/media/star-empty.svg": "/System-engineering-engage-project/static/media/star-empty.2982853a1bdb42e334ee37803bece121.svg",
     "static/media/users.svg": "/System-engineering-engage-project/static/media/users.552614cfe7062098ca8b482e73c5a0cd.svg",
     "static/media/checked.svg": "/System-engineering-engage-project/static/media/checked.26bec32b732155eb4ecf21d12b0238b1.svg",
     "index.html": "/System-engineering-engage-project/index.html",
     "static/media/plus.svg": "/System-engineering-engage-project/static/media/plus.425c4224673699a6150cce174e789775.svg",
+    "static/media/star-complete.svg": "/System-engineering-engage-project/static/media/star-complete.835b93ad90388fe91a277b2e63ba61fc.svg",
     "static/media/pointer.svg": "/System-engineering-engage-project/static/media/pointer.2036d2ec4348f6cd89e697444f6f8f90.svg",
     "static/media/write.svg": "/System-engineering-engage-project/static/media/write.a75b7cbce526c52d69e196ac7e334bf0.svg",
     "static/media/box.svg": "/System-engineering-engage-project/static/media/box.4e6657ff58462a6eabde301f30857aee.svg",
-    "main.143dc4f1.css.map": "/System-engineering-engage-project/static/css/main.143dc4f1.css.map",
-    "main.3f9a9d9c.js.map": "/System-engineering-engage-project/static/js/main.3f9a9d9c.js.map"
+    "main.64243556.css.map": "/System-engineering-engage-project/static/css/main.64243556.css.map",
+    "main.fe1fb214.js.map": "/System-engineering-engage-project/static/js/main.fe1fb214.js.map"
   },
   "entrypoints": [
-    "static/css/main.143dc4f1.css",
-    "static/js/main.3f9a9d9c.js"
+    "static/css/main.64243556.css",
+    "static/js/main.fe1fb214.js"
   ]
 }
