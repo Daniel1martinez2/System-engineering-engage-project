@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/System-engineering-engage-project/static/css/main.3df5812d.css",
-    "main.js": "/System-engineering-engage-project/static/js/main.4d147ee2.js",
+    "main.js": "/System-engineering-engage-project/static/js/main.d336699c.js",
     "static/media/sistemas.png": "/System-engineering-engage-project/static/media/sistemas.7a9559fe9fdf41c675a3.png",
     "static/media/star.png": "/System-engineering-engage-project/static/media/star.b3dfd2d205c6d83c71b6.png",
     "static/media/ani.gif": "/System-engineering-engage-project/static/media/ani.8fbebb9252628938fb92.gif",
@@ -26,10 +26,10 @@
     "static/media/write.svg": "/System-engineering-engage-project/static/media/write.a75b7cbce526c52d69e196ac7e334bf0.svg",
     "static/media/box.svg": "/System-engineering-engage-project/static/media/box.4e6657ff58462a6eabde301f30857aee.svg",
     "main.3df5812d.css.map": "/System-engineering-engage-project/static/css/main.3df5812d.css.map",
-    "main.4d147ee2.js.map": "/System-engineering-engage-project/static/js/main.4d147ee2.js.map"
+    "main.d336699c.js.map": "/System-engineering-engage-project/static/js/main.d336699c.js.map"
   },
   "entrypoints": [
     "static/css/main.3df5812d.css",
-    "static/js/main.4d147ee2.js"
+    "static/js/main.d336699c.js"
   ]
 }
