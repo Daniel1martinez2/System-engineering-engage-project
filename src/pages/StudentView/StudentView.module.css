@@ -83,3 +83,22 @@
 .senpai-points {
   color: var(--main-white)
 }
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--size3);
+}
+
+.delete-user {
+  background: none;
+  border: none;
+  color: var(--error);
+  font-size: var(--h2);
+}
+
+.delete-account-container {
+  color: var(--main-white);
+}
+.delete-account-container h3 {
+  color: var(--error);
+}

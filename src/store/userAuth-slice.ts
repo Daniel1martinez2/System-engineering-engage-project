@@ -1,6 +1,6 @@
 import { createSlice, Dispatch, AnyAction } from "@reduxjs/toolkit";
 import { StudentType, TeacherType, isStudentType, userMessage } from "../types/user";
-import { Firestore, getDoc } from "firebase/firestore";
+import { Firestore, getDoc, deleteDoc } from "firebase/firestore";
 import { setUserDataFromObj } from "../utils/firebase-functions/setUserDataFromObj";
 import {
   signInWithEmailAndPassword,
@@ -8,6 +8,8 @@ import {
   onAuthStateChanged,
   signOut,
   createUserWithEmailAndPassword,
+  deleteUser,
+  getAuth,
 } from "firebase/auth";
 import { setDoc, doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import { getCurrentUser } from "../utils/firebase-functions/getCurrentUser";
@@ -131,6 +133,31 @@ export const logOutUser = (auth: Auth, callback?: Function) => {
         dispatch(userLoginSlice.actions.logout());
         dispatch(classSlice.actions.clearData());
         if (callback) callback();
+      })
+      .catch((error) => {
+        // An error happened.
+        console.log("Error during sign-out", error);
+      });
+  };
+};
+
+export const deleteUserByUID = (db: Firestore, userId: string, classId: string, callback?: Function) => {
+  return async (dispatch: Dispatch<AnyAction>) => {
+    const authUser = getAuth();
+    const user = authUser.currentUser;
+    console.log("USER-->", user)
+    if(!user) return
+    deleteUser(user)
+      .then(() => {
+        const docRef = doc(db, "users", userId);
+        dispatch(userLoginSlice.actions.logout());
+        deleteDoc(docRef)
+
+        updateDoc(doc(db, `classes/${classId}`), { studentsId:  arrayRemove(userId)}).then(
+          () => {
+            if(callback) callback();
+          }
+        );
       })
       .catch((error) => {
         // An error happened.

@@ -6,7 +6,9 @@
 
 .student-info aside {
   width: 35px;
+  min-width: 35px;
   height: 35px;
+
   border-radius: 100px;
   overflow: hidden;
 }
@@ -30,4 +32,5 @@
 
 .profile-image {
   width: 100%;
+  display: block;
 }

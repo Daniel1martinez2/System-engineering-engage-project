@@ -10,7 +10,7 @@ import MessageModal from '../../components/MessageModal/MessageModal';
 import Modal from '../../components/Modal/Modal';
 import MainBtn from '../../components/MainBtn/MainBtn';
 import styles from './StudentView.module.css';
-import {deleteUserMessage} from '../../store/userAuth-slice';
+import {deleteUserMessage, deleteUserByUID} from '../../store/userAuth-slice';
 import SelectDropDown from '../../components/SelectDropDown/SelectDropDown';
 import { getStudentsFromClass } from '../../utils/firebase-functions/getStudentsFromClass';
 import UserThumbNail from '../../components/UserThumbNail/UserThumbNail';
@@ -19,7 +19,7 @@ import { getSenpaiStudents } from '../../utils/firebase-functions/getSenpaiActio
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import Arrow from '../../components/UI/Arrow/Arrow';
 import LoaderLine from '../../components/LoaderLine/LoaderLine';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {setUsersSortByTopic, getUserTopicPoints} from '../../utils/handleSortByTopic';
 
 interface StudentViewInterface {
@@ -34,7 +34,9 @@ const StudentView: React.FC<StudentViewInterface> = ({studentUser}) => {
   const [loadingApprentices, setLoadingApprentices] = useState(false);
   const [loadingRankings, setLoadingRankings] = useState(false);
   const [activeMessages, setActiveMessages] = useState(studentUser.messages.length > 0);
+  const [deleteAccountModal, setDeleteAccountModal] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const selectDropdownRef = useRef<any>();
   let position = 1
   
@@ -81,6 +83,13 @@ const StudentView: React.FC<StudentViewInterface> = ({studentUser}) => {
     }
   };
 
+  const handleDeleteUserAccount = () => {
+    dispatch(deleteUserByUID(db, studentUser.id, studentUser.belongedClassId,  () => {
+      setDeleteAccountModal(false);
+      navigate('/login');
+    }))
+  }
+
   return (
     <div className={styles['student-view']}>
       { studentUser.messages.length > 0 && activeMessages &&(
@@ -91,7 +100,25 @@ const StudentView: React.FC<StudentViewInterface> = ({studentUser}) => {
           </article>
         </Modal>
       )}
-      <LogOut/>
+
+      {deleteAccountModal && 
+        <Modal onCancelBtnAction={() => {setDeleteAccountModal(false)}}>
+          <article className={`${styles['message-container']} ${styles['delete-account-container']}`}>
+            <h3>Warning</h3>
+            <p>By deleting your account, you will lose all your points and progress</p>
+            <MainBtn text={'Delete Account'} action={handleDeleteUserAccount}/>
+          </article>
+        </Modal>
+      }
+
+      <div className={styles['header-actions']}>
+        <LogOut/>
+        <button className={styles['delete-user']} onClick={()=> {
+          setDeleteAccountModal(true);
+        }}>
+          Delete user
+        </button>
+      </div>
       <StudentInfo 
         name={studentUser.name} 
         profile={studentUser.profile.name}
