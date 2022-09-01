@@ -141,11 +141,38 @@ export const logOutUser = (auth: Auth, callback?: Function) => {
   };
 };
 
-export const deleteUserByUID = (db: Firestore, userId: string, classId: string, callback?: Function) => {
+export const deleteUserByUID = (db: Firestore, userData: StudentType, userId: string, classId: string, callback?: Function) => {
   return async (dispatch: Dispatch<AnyAction>) => {
     const authUser = getAuth();
     const user = authUser.currentUser;
-    console.log("USER-->", user)
+    //wether the user is a senpai, -> remove all the references of each apprentice regarding the relationship
+    if(userData.studentsId){
+      console.log(userData.studentsId)
+      userData.studentsId.forEach( apprenticeId => {
+        updateDoc(doc(db, `users/${apprenticeId}`), { senpaiId: ''})
+          .then(
+            () => {
+              console.log("REFERENCE DELETED")
+            }
+          )
+          .catch(err => {
+            console.log(err)
+          })
+      });
+    }
+    //wether the user is a apprentice, remove the id from senpai apprentices array
+    if(userData.senpaiId){
+      updateDoc(doc(db, `users/${userData.senpaiId}`), { studentsId: arrayRemove(userId)})
+      .then(
+        () => {
+          console.log("REFERENCE DELETED")
+        }
+      )
+      .catch(err => {
+        console.log(err)
+      })
+    }
+    //Delete account and reference of the user
     if(!user) return
     deleteUser(user)
       .then(() => {

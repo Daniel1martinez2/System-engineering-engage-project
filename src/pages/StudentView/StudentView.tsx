@@ -84,7 +84,7 @@ const StudentView: React.FC<StudentViewInterface> = ({studentUser}) => {
   };
 
   const handleDeleteUserAccount = () => {
-    dispatch(deleteUserByUID(db, studentUser.id, studentUser.belongedClassId,  () => {
+    dispatch(deleteUserByUID(db, studentUser, studentUser.id, studentUser.belongedClassId,  () => {
       setDeleteAccountModal(false);
       navigate('/login');
     }))
